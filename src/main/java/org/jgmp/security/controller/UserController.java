@@ -1,10 +1,10 @@
 package org.jgmp.security.controller;
 
-import org.jgmp.security.domain.UserDto;
-import org.jgmp.security.service.UserService;
+import java.util.List;
+
+import org.jgmp.security.service.LoginAttemptService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,13 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private LoginAttemptService loginAttemptService;
 
-    @PostMapping
-    public String register(@RequestBody UserDto user) {
-        System.out.println("USER = = = = = =  = =" + user.getUserName());
-        userService.registerUser(user.getUserName(), user.getPassword());
-        return "ok";
+    @GetMapping
+    public List<String> getBlocked() {
+        return loginAttemptService.getBlockedList();
     }
 
 }

@@ -2,17 +2,15 @@ package org.jgmp.security.service;
 
 import org.jgmp.security.domain.Users;
 import org.jgmp.security.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
 
 
-@Service
+//@Service
 public class UserService {
     public static final String YOUR_SALT = "your_salt";
-    @Autowired
+    //    @Autowired
     private UserRepository userRepository;
-    @Autowired
+    //    @Autowired
     private PasswordEncoder passwordEncoder;
 
     public void registerUser(String username, String password) {

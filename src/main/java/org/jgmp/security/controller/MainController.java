@@ -1,10 +1,11 @@
 package org.jgmp.security.controller;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 @RequestMapping("/")
 public class MainController {
 
@@ -14,18 +15,32 @@ public class MainController {
     }
 
     @GetMapping("/about")
-    public String getHome() {
-        return "<H1> WELCOME  TO  HOME PAGE !!!</H1>";
+    public String getHome(Model model) {
+        return "index";
     }
 
     @GetMapping("/info")
     public String getInfo() {
-        return """
-                <H1>
-                    MVC APPLICATION
-                </H1>
-                """;
+        return "info";
+//        return """
+//                <H1>
+//                   INFO  MVC APPLICATION
+//                </H1>
+//                """;
     }
 
+    @GetMapping("/admin")
+    public String getAdmin() {
+        return "admin";
+//        return """
+//                <H1>
+//                   ADMIN PAGE
+//                </H1>
+//                """;
+    }
 
+    @GetMapping("/login")
+    public String getLogin() {
+        return "login";
+    }
 }
